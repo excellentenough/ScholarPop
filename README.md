@@ -6,7 +6,7 @@
 
 ## 下载与安装
 
-1. 到 [Releases](../../releases/latest) 下载 `scholarpop-0.2.0.xpi`
+1. 到 [Releases](../../releases/latest) 下载 `scholarpop-0.2.1.xpi`
 2. Zotero → **工具 → 插件 → 右上角齿轮 → Install Plugin From File…** → 选择 xpi
 3. **重启 Zotero**
 4. 菜单 **工具 → ScholarPop设置**：选择服务商，粘贴对应平台的 API Key，保存
@@ -20,6 +20,7 @@
 | 划词解释 | 划选文字 → 点选区上方的 **AI** 图标 |
 | 截图识别（公式/图表/符号） | 点 **📷** → 拖出矩形框选区域 → 松开后视觉模型结合上下文解释，Esc 取消 |
 | 追问对话 | 弹窗底部输入框，Enter 发送，Shift+Enter 换行，保留最近 20 条记录 |
+| 清晰显示回答 | 自动清理多余的 Markdown 符号，将常见 LaTeX 公式符号、上下标和分式转为易读文本 |
 | 窗口操作 | 标题栏拖动位置；◢ / ◣ 双角落调整大小；"—" 收起、"＋" 展开；✕ 关闭 |
 | 多服务商 | Moonshot（Kimi）/ DeepSeek / OpenAI / 自定义，模型名可改 |
 | 可调设置 | 联网搜索、深度思考、上下文字符数（前后独立）、截图按钮开关、视觉模型 |

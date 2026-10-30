@@ -712,6 +712,7 @@ async function showPanel(win, reader, text, context, rect, imageDataUrl, wantIma
         ? "align-self:flex-end;background:#e3efff;"
         : "align-self:flex-start;background:#f4f4f4;");
     b.textContent = content;
+    if (role === "assistant") b.innerHTML = renderRich(content);
     body.appendChild(b);
     scrollBottom();
     return b;
@@ -811,6 +812,48 @@ async function showPanel(win, reader, text, context, rect, imageDataUrl, wantIma
   send(null);
 }
 
+// 把 AI 回答里的 Markdown / LaTeX 符号转成干净的可读格式
+function renderRich(text) {
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  let out = esc(text);
+  out = out.replace(/\*\*([^*\n]+)\*\*/g, "<b>$1</b>").replace(/__([^_\n]+)__/g, "<b>$1</b>");
+  out = out.replace(/`([^`\n]+)`/g,
+    '<span style="font-family:monospace;background:#e8e8e8;padding:0 3px;border-radius:3px;">$1</span>');
+  out = out.replace(/^#{1,6}\s*/gm, "").replace(/^[*-]\s+/gm, "• ");
+  out = out.replace(/\$([^$\n]+)\$/g, (m, f) => latexToUnicode(f));
+  return out;
+}
+
+function latexToUnicode(f) {
+  const map = {
+    alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε", varepsilon: "ε",
+    zeta: "ζ", eta: "η", theta: "θ", iota: "ι", kappa: "κ", lambda: "λ", mu: "μ",
+    nu: "ν", xi: "ξ", pi: "π", rho: "ρ", sigma: "σ", tau: "τ", upsilon: "υ",
+    phi: "φ", varphi: "φ", chi: "χ", psi: "ψ", omega: "ω",
+    Gamma: "Γ", Delta: "Δ", Theta: "Θ", Lambda: "Λ", Sigma: "Σ", Phi: "Φ", Psi: "Ψ", Omega: "Ω",
+    leq: "≤", le: "≤", geq: "≥", ge: "≥", neq: "≠", ne: "≠", approx: "≈", sim: "∼",
+    equiv: "≡", times: "×", cdot: "·", div: "÷", pm: "±", mp: "∓", infty: "∞",
+    sum: "∑", prod: "∏", int: "∫", oint: "∮", sqrt: "√", partial: "∂", nabla: "∇",
+    in: "∈", notin: "∉", subset: "⊂", supset: "⊃", subseteq: "⊆", supseteq: "⊇",
+    cup: "∪", cap: "∩", emptyset: "∅", forall: "∀", exists: "∃",
+    rightarrow: "→", to: "→", leftarrow: "←", Rightarrow: "⇒", Leftarrow: "⇐",
+    leftrightarrow: "↔", mapsto: "↦", ldots: "…", cdots: "⋯", langle: "⟨", rangle: "⟩",
+    perp: "⊥", parallel: "∥", propto: "∝", circ: "∘", oplus: "⊕", ominus: "⊖",
+    otimes: "⊗", wedge: "∧", vee: "∨", neg: "¬",
+    max: "max", min: "min", lim: "lim", log: "log", ln: "ln", exp: "exp",
+    sin: "sin", cos: "cos", tan: "tan", arg: "arg", det: "det", mod: "mod",
+  };
+  let s = f;
+  s = s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "($1)/($2)");
+  s = s.replace(/\\text\{([^{}]*)\}/g, "$1");
+  s = s.replace(/\\(mathbf|mathrm|mathit|boldsymbol|mathbb)\{([^{}]*)\}/g, "$2");
+  s = s.replace(/\\([a-zA-Z]+)/g, (m, name) => map[name] !== undefined ? map[name] : name);
+  s = s.replace(/_\{([^{}]+)\}/g, "<sub>$1</sub>").replace(/\^\{([^{}]+)\}/g, "<sup>$1</sup>");
+  s = s.replace(/_([0-9a-zA-Z])/g, "<sub>$1</sub>").replace(/\^([0-9a-zA-Z])/g, "<sup>$1</sup>");
+  s = s.replace(/[{}]/g, "");
+  return s;
+}
+
 function buildMessages(text, context, title) {
   return [
     {
@@ -820,6 +863,7 @@ function buildMessages(text, context, title) {
         "请用简洁易懂的中文解释它：先说它是什么，再结合论文上下文说明它在文中的作用/含义；" +
         "如果是术语，给出英文全称（若适用）；如果是公式或方法，解释其直观意义。" +
         "不要冗长，200 字以内为主，必要时可用短列表。" +
+        "请用纯文本回答：不要使用 Markdown 标记（如 **、*、#、反引号）和 LaTeX 语法（如 $...$、\\frac）；公式直接用普通 Unicode 字符书写，例如 Vmin ≤ V(u,v) ≤ Vmax、θ₁、x²；列表项用「• 」开头。" +
         "之后用户可能针对你的解释继续追问，请结合论文上下文和已有对话回答。",
     },
     {
