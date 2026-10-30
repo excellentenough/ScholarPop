@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Kimi 划词助手",
+  "version": "0.1.0",
+  "description": "在 Zotero PDF 阅读器中划词，点击 Kimi 图标即可结合上下文与联网搜索获得解释。",
+  "author": "Kimi Work",
+  "applications": {
+    "zotero": {
+      "id": "kimiassist@kimi.local",
+      "strict_min_version": "7.0",
+      "strict_max_version": "10.*"
+    }
+  }
+}
