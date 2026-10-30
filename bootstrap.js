@@ -152,7 +152,7 @@ function init(win) {
     const item = doc.createXULElement
       ? doc.createXULElement("menuitem")
       : doc.createElement("menuitem");
-    item.setAttribute("label", "Kimi 划词助手设置");
+    item.setAttribute("label", "ScholarPop 设置");
     item.setAttribute("id", "kimi-assist-settings");
     item.addEventListener("command", openSettings);
     popup.appendChild(item);
@@ -182,7 +182,7 @@ function openSettings() {
   overlay.appendChild(box);
 
   const title = doc.createElement("div");
-  title.textContent = "Kimi 划词助手设置";
+  title.textContent = "ScholarPop 设置";
   title.style.cssText = "font-size:17px;font-weight:bold;margin-bottom:6px;";
   box.appendChild(title);
 
@@ -383,7 +383,7 @@ function onMouseUp(win, reader) {
 
   const btn = doc.createElement("div");
   btn.className = "kimi-assist-ui kimi-assist-btn";
-  btn.textContent = "Kimi";
+  btn.textContent = "AI";
   btn.style.cssText =
     "position:fixed;z-index:2147483647;background:#1c64f2;color:#fff;" +
     "padding:4px 12px;border-radius:14px;font:13px/1.4 sans-serif;cursor:pointer;" +
@@ -549,7 +549,7 @@ async function showPanel(win, reader, text, context, rect, imageDataUrl, wantIma
     "padding:6px 12px;background:#1c64f2;color:#fff;font-weight:bold;" +
     "cursor:move;user-select:none;";
   const headerTitle = doc.createElement("span");
-  headerTitle.textContent = "Kimi 解释";
+  headerTitle.textContent = "ScholarPop";
   header.appendChild(headerTitle);
   const headerBtns = doc.createElement("span");
   const collapseBtn = doc.createElement("span");
@@ -721,7 +721,7 @@ async function showPanel(win, reader, text, context, rect, imageDataUrl, wantIma
     if (busy || !baseMessages) return;
     const apiKey = getPref("apikey", "");
     if (!apiKey) {
-      addBubble("assistant", "还没有配置 API Key。\n请在 Zotero 主窗口菜单：工具 → Kimi 划词助手设置 中填写。");
+      addBubble("assistant", "还没有配置 API Key。\n请在 Zotero 主窗口菜单：工具 → ScholarPop 设置 中填写。");
       return;
     }
     busy = true;

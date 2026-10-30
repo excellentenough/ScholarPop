@@ -1,4 +1,4 @@
-# Kimi 划词助手 for Zotero
+# ScholarPop for Zotero
 
 在 Zotero 的 PDF 阅读器里划词，点一下图标，AI 结合论文上下文解释；公式、图表用矩形框选截图识别。支持追问对话、多服务商（Kimi / DeepSeek / OpenAI / 自定义 OpenAI 兼容 API）。
 
@@ -6,10 +6,10 @@
 
 ## 下载与安装
 
-1. 到 [Releases](../../releases/latest) 下载 `kimi-assist-0.1.0.xpi`
+1. 到 [Releases](../../releases/latest) 下载 `scholarpop-0.2.0.xpi`
 2. Zotero → **工具 → 插件 → 右上角齿轮 → Install Plugin From File…** → 选择 xpi
 3. **重启 Zotero**
-4. 菜单 **工具 → Kimi 划词助手设置**：选择服务商，粘贴对应平台的 API Key，保存
+4. 菜单 **工具 → ScholarPop设置**：选择服务商，粘贴对应平台的 API Key，保存
 
 > API Key 需自行在服务商平台申请（如 Kimi 在 [platform.moonshot.cn](https://platform.moonshot.cn)）。Key 只保存在你本机 Zotero 配置中，插件仅向你设置的服务商接口发请求。
 
@@ -17,7 +17,7 @@
 
 | 功能 | 用法 |
 |---|---|
-| 划词解释 | 划选文字 → 点选区上方的 **Kimi** 图标 |
+| 划词解释 | 划选文字 → 点选区上方的 **AI** 图标 |
 | 截图识别（公式/图表/符号） | 点 **📷** → 拖出矩形框选区域 → 松开后视觉模型结合上下文解释，Esc 取消 |
 | 追问对话 | 弹窗底部输入框，Enter 发送，Shift+Enter 换行，保留最近 20 条记录 |
 | 窗口操作 | 标题栏拖动位置；◢ / ◣ 双角落调整大小；"—" 收起、"＋" 展开；✕ 关闭 |
