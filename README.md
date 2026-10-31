@@ -2,11 +2,11 @@
 
 在 Zotero 的 PDF 阅读器里划词，点一下图标，AI 结合论文上下文解释；公式、图表用矩形框选截图识别。支持追问对话、多服务商（Kimi / DeepSeek / OpenAI / 自定义 OpenAI 兼容 API）。
 
-适用：**Zotero 7–10**（在 Zotero 10 实测通过）
+适用：**Zotero 7–10**（已在 Zotero 10.0.7 实测通过；Zotero 7–9 可安装，但尚未完整测试）
 
 ## 下载与安装
 
-1. 到 [Releases](../../releases/latest) 下载 **`scholarpop-0.2.2.xpi`**（不要下载 Source code 源码压缩包）
+1. 到 [Releases](../../releases/latest) 下载 **`scholarpop-0.2.3.xpi`**（不要下载 Source code 源码压缩包）
 2. Zotero → **工具 → 插件 → 右上角齿轮 → Install Plugin From File…** → 选择 xpi
 3. **重启 Zotero**
 4. 菜单 **工具 → ScholarPop设置**：选择服务商，粘贴对应平台的 API Key，保存

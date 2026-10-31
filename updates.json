@@ -1,0 +1,19 @@
+{
+  "addons": {
+    "kimiassist@kimi.local": {
+      "updates": [
+        {
+          "version": "0.2.3",
+          "update_link": "https://github.com/excellentenough/ScholarPop/releases/download/v0.2.3/scholarpop-0.2.3.xpi",
+          "update_hash": "sha256:f816cac1a2586a42ba977f4326a92e69607127b578467783168974ef6918f1b7",
+          "applications": {
+            "zotero": {
+              "strict_min_version": "7.0",
+              "strict_max_version": "10.9.9"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
