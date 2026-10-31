@@ -1,14 +1,14 @@
 {
   "manifest_version": 2,
   "name": "ScholarPop",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Zotero 划词 AI 解释插件：划词即解释，矩形框选截图识别公式图表，支持 Kimi / DeepSeek / OpenAI 及自定义 API。",
   "author": "Kimi Work",
   "applications": {
     "zotero": {
       "id": "kimiassist@kimi.local",
       "strict_min_version": "7.0",
-      "strict_max_version": "10.*"
+      "strict_max_version": "10.0.*"
     }
   }
 }

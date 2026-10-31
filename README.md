@@ -6,7 +6,7 @@
 
 ## 下载与安装
 
-1. 到 [Releases](../../releases/latest) 下载 `scholarpop-0.2.1.xpi`
+1. 到 [Releases](../../releases/latest) 下载 **`scholarpop-0.2.2.xpi`**（不要下载 Source code 源码压缩包）
 2. Zotero → **工具 → 插件 → 右上角齿轮 → Install Plugin From File…** → 选择 xpi
 3. **重启 Zotero**
 4. 菜单 **工具 → ScholarPop设置**：选择服务商，粘贴对应平台的 API Key，保存
